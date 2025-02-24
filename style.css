@@ -1,0 +1,224 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* Container and alignment */
+center {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* Table layout for food items */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+}
+
+/* Image styling */
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+button {
+    background-color: #beafc2;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #613e6b;
+}
+
+/* Cart section styling */
+#cartList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cartList li {
+    padding: 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+#totalPrice {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Checkout button styles */
+#checkoutButton {
+    background-color: #591c76;
+}
+
+#checkoutButton:hover {
+    background-color: #270736;
+}
+
+/* Checkout popup */
+#checkoutPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #beafc2;
+    border: 2px solid #784f83;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+#checkoutSummary {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#checkoutSummary li {
+    padding: 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+#checkoutTotalPrice {
+    font-weight: bold;
+}
+
+#confirmCheckout {
+    background-color: #28a745;
+}
+
+#confirmCheckout:hover {
+    background-color: #218838;
+}
+
+#cancelCheckout {
+    background-color: #dc3545;
+}
+
+#cancelCheckout:hover {
+    background-color: #c82333;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    table, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    #checkoutPopup {
+        width: 90%;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 16px;
+        width: 100%;
+    }
+}
+
+/* Background and improved contrast */
+body {
+    background-image: url('nigga.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+ul li {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+@keyframes flyToCart {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, -500px) scale(0.1);
+    }
+}
+
+.flyingImage {
+    position: absolute;
+    z-index: 1000;
+    width: 100px;
+    transition: all 1s ease-in-out;
+    animation: flyToCart 1s ease-in-out forwards;
+}

@@ -1,0 +1,116 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #f8f8f8;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+/* Orders List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+ul li {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(43, 7, 110);
+    color: #000000; /* Set text color to black */
+}
+
+ul li:hover {
+    background-color: #4e0580;
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+/* Button styling */
+button {
+    background-color: #1bb90c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #067441;
+}
+
+/* Clear Orders Button */
+#clearOrdersButton {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+}
+
+#clearOrdersButton:hover {
+    background-color: #c9302c;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    ul li {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Background and improved contrast */
+body {
+    background-image: url('sigma.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    color: #ffffff;
+}
