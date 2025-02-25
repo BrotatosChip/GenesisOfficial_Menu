@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const markAsDoneButton = document.createElement('button');
                     markAsDoneButton.textContent = 'Mark as Done';
                     markAsDoneButton.addEventListener('click', function () {
-                        markOrderAsDone(customer, orders[customer], totalOrderCostUSD, totalOrderCostKHR);
+                        markOrderAsDone(customer);
                         orders[customer].forEach(order => order.completed = true);
                         localStorage.setItem('foodOrders', JSON.stringify(orders));
                         updateOrderDisplay();
@@ -56,28 +56,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    const markOrderAsDone = (customer, items, totalPriceUSD, totalPriceKHR) => {
-        const completedOrder = {
-            customer,
-            items,
-            totalPriceUSD,
-            totalPriceKHR
-        };
-
+    const markOrderAsDone = (customer) => {
         fetch('http://localhost:3000/logOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(completedOrder)
+            body: JSON.stringify({ customer })
         })
         .then(response => response.text())
         .then(responseMessage => {
             console.log(responseMessage);
             alert(`Order for ${customer} marked as done and logged.`);
-            const message = `Order for ${customer} completed! Total: $${totalPriceUSD.toFixed(2)} (៛${totalPriceKHR.toLocaleString()})`;
-            sendTelegramMessage(telegramGroupChatId, message);
-            sendTelegramMessage(personalChatId, message);
+            
+            sendTelegramMessage(telegramGroupChatId, "✅ Order is done");
+            sendTelegramMessage(personalChatId, "✅ Order is done");
         })
         .catch(error => {
             console.error("Error logging completed order:", error);
@@ -106,16 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error("Error sending Telegram message:", error);
         });
-    };
-
-    const deleteCustomerOrders = (customer) => {
-        let orders = JSON.parse(localStorage.getItem('foodOrders')) || {};
-        if (orders[customer]) {
-            delete orders[customer];
-            localStorage.setItem('foodOrders', JSON.stringify(orders));
-            updateOrderDisplay();
-            alert(`All orders for ${customer} have been deleted.`);
-        }
     };
 
     updateOrderDisplay();
