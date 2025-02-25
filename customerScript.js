@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalPrice = 0;
     const conversionRate = 4100;
 
+    // Telegram Bot Config
+    const telegramBotToken = '7809999917:AAFjpVxgcLASnwcK6F6NMA5815j3wXPDMcE';
+    const telegramGroupChatId = '-1001921593847';
+
     // Select DOM elements
     const addToCartButtons = document.querySelectorAll('.addToCartButton');
     const cartList = document.getElementById('cartList');
@@ -94,6 +98,26 @@ document.addEventListener('DOMContentLoaded', function () {
         checkoutTotalPrice.textContent = `$${totalPrice.toFixed(2)} (៛${checkoutTotalPriceKHR.toLocaleString()})`;
     });
 
+    // Function to send message to Telegram group
+    const sendTelegramMessage = (message) => {
+        fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: telegramGroupChatId, text: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.ok) {
+                console.error("Error sending Telegram message:", data);
+            } else {
+                console.log("Telegram message sent successfully");
+            }
+        })
+        .catch(error => {
+            console.error("Error sending Telegram message:", error);
+        });
+    };
+
     // Confirm the checkout and save the order to localStorage
     confirmCheckout.addEventListener('click', function () {
         // Save cart and discount to localStorage for admin view
@@ -104,22 +128,27 @@ document.addEventListener('DOMContentLoaded', function () {
             orders[customerName] = [];
         }
 
+        let orderDetails = `🛒 *New Order Placed* 🛒\n👤 Customer: ${customerName}\n`;
+
         // Store order with discount information
         cart.forEach(item => {
-            orders[customerName].push({
-                food: item.food,
-                price: item.price,
-                quantity: item.quantity
-            });
+            orders[customerName].push({ food: item.food, price: item.price, quantity: item.quantity });
+            orderDetails += `🍔 ${item.food} x ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
         });
 
         // Include discount amount in the order for reference
-        orders[customerName].push({
-            discount: discountApplied.toFixed(2),
-            totalPrice: totalPrice.toFixed(2)
-        });
+        orders[customerName].push({ discount: discountApplied.toFixed(2), totalPrice: totalPrice.toFixed(2) });
+
+        orderDetails += `\n💰 Total: $${totalPrice.toFixed(2)} (៛${(totalPrice * conversionRate).toLocaleString()})`;
+
+        if (discountApplied > 0) {
+            orderDetails += `\n🎉 Discount Applied: -$${discountApplied.toFixed(2)}`;
+        }
 
         localStorage.setItem('foodOrders', JSON.stringify(orders));
+
+        // Send the order details to the Telegram group
+        sendTelegramMessage(orderDetails);
 
         // Clear cart and hide checkout popup
         cart.length = 0;
