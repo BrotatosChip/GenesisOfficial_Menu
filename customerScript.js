@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Telegram Bot Config
     const telegramBotToken = '7809999917:AAFjpVxgcLASnwcK6F6NMA5815j3wXPDMcE';
-    const telegramGroupChatId = '-4672155220';
+    const telegramGroupChatId = '-1001921593847';
 
     // Select DOM elements
     const addToCartButtons = document.querySelectorAll('.addToCartButton');
