@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE GENESIS MENU</title>
+    <script src="customerScript.js" defer></script>
+    <style>
+        /* Ensure all form inputs are consistent */
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        /* Special Instructions Box */
+        textarea {
+            resize: none;
+            height: 60px;
+        }
+
+        /* Checkout Popup Styles */
+        #checkoutPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #beafc2;
+            padding: 20px;
+            border: 2px solid #784f83;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        #checkoutSummarySection, #deliverySection {
+            background: #784f83;
+            padding: 40px;
+            border-radius: 5px;
+        }
+
+        /* Input and Select Box Styling for Delivery Section */
+        #deliverySection input,
+        #deliverySection select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* For hiding phone number field */
+        #customerPhone {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <!-- Shirts -->
+        <div>
+            <h2>Our Shirts</h2>
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <img src="food/blackshirt.png" alt="blackshirt" />
+                            <br />
+                            <button class="addToCartButton" data-food="blackshirt" data-price="12.00">Black Shirt ($12.00)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/whiteshirt.png" alt="whiteshirt" />
+                            <br />
+                            <button class="addToCartButton" data-food="whiteshirt" data-price="12.00">White Shirt ($12.00)</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Cookies -->
+        <div>
+            <h2>Cookies</h2>
+            <table>
+                <tr>
+                    <td>
+                        <div>
+                            <img src="food/classic.png" alt="Classic Bites" />
+                            <br />
+                            <button class="addToCartButton" data-food="Classic Bites" data-price="1">Classic Bites ($1.00)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/matcha.png" alt="Genesis Crunch" />
+                            <br />
+                            <button class="addToCartButton" data-food="Genesis Crunch" data-price="1.25">Genesis Crunch ($1.25)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/cake.png" alt="Birthday Cake" />
+                            <br />
+                            <button class="addToCartButton" data-food="Birthday Cake" data-price="1.25">Birthday Cake ($1.25)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/cupid.png" alt="Cupid Cookie" />
+                            <br />
+                            <button class="addToCartButton" data-food="Cupid Cookie" data-price="1.50">Cupid Cookie ($1.50)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/oreo.png" alt="Oreo'munch" />
+                            <br />
+                            <button class="addToCartButton" data-food="Oreo'munch" data-price="1.75">Oreo'munch ($1.75)</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <img src="food/smore.png" alt="S'mores" />
+                            <br />
+                            <button class="addToCartButton" data-food="S'mores" data-price="1.75">S'mores ($1.75)</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Cart Section -->
+        <div>
+            <h2>Your Cart</h2>
+            <ul id="cartList">
+                <!-- Cart items will appear here -->
+            </ul>
+            <p>Total: <span id="totalPrice">0</span></p>
+            <button id="checkoutButton">Checkout</button>
+        </div>
+
+        <!-- Checkout Popup -->
+        <div id="checkoutPopup">
+            <!-- Checkout Summary Section -->
+            <div id="checkoutSummarySection" style="background: #784f83; color: white; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                <h2>Checkout Summary</h2>
+                <ul id="checkoutSummary">
+                    <!-- Checkout summary will appear here -->
+                </ul>
+                <p>Total: <span id="checkoutTotalPrice" style="font-weight: bold; color: #ffcc00;">0</span></p>
+            </div>
+
+            <!--Customer Info Section -->
+            <div id="deliverySection">
+                <h2>Delivery Details</h2>
+                <label for="customerName">Name 👤:</label>
+                <input type="text" id="customerName" placeholder="Enter your name" required>
+
+                <label for="customerClass">Class or Address 🏫:</label>
+                <input type="text" id="customerClass" placeholder="Enter your class or address" required>
+
+                <label for="phoneOption">Phone Number 📞:</label>
+                <select id="phoneOption">
+                    <option value="noPhone">No Phone Number</option>
+                    <option value="hasPhone">Enter Phone Number</option>
+                </select>
+                
+                <label for="customerPhone" id="phoneLabel" style="display: none;">Phone Number 📞:</label>
+                <input type="text" id="customerPhone" placeholder="Enter your phone number" style="display: none;">
+
+                <!-- Delivery Method -->
+                <label for="deliveryMethod">Delivery Method 🚲:</label>
+                <select id="deliveryMethod">
+                    <option value="Pickup">📦 Pickup</option>
+                    <option value="Delivery">🚚 Delivery</option>
+                </select>
+
+                <!-- Special Instructions -->
+                <label for="specialInstructions">Special Instructions ✍️:</label>
+                <textarea id="specialInstructions" placeholder="Enter any special requests (e.g., separate packaging)"></textarea>
+            </div>
+
+            <!-- Checkout Buttons -->
+            <div style="margin-top: 15px; text-align: center;">
+                <button type="submit" id="confirmCheckout" style="background: #28a745; color: white; padding: 10px; border-radius: 5px;">Confirm Order</button>
+                <button type="button" id="cancelCheckout" style="background: #dc3545; color: white; padding: 10px; border-radius: 5px;">Cancel</button>
+            </div>
+        </div>
+    </div>

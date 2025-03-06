@@ -1,0 +1,338 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Headings */
+h1, h2 {
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Responsive Grid for Food Items */
+.food-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* Table layout */
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+}
+
+/* Image styling */
+img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Quantity Controls */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.quantity-button {
+    background-color: #beafc2;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-button:hover {
+    background-color: #613e6b;
+}
+
+/* Styling for quantity input */
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 0 5px;
+    padding: 5px;
+}
+
+/* Button styling */
+button {
+    background-color: #beafc2;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #613e6b;
+}
+
+/* Cart section styling */
+#cartList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cartList li {
+    padding: 5px 0;
+    font-size: 1rem;
+    color: #ad90e2;
+}
+
+#totalPrice {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Checkout button styles */
+#checkoutButton {
+    background-color: #591c76;
+}
+
+#checkoutButton:hover {
+    background-color: #270736;
+}
+
+/* Checkout popup */
+#checkoutPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #beafc2;
+    border: 2px solid #784f83;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Checkout Summary List */
+#checkoutSummary {
+    list-style-type: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #784f83;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#checkoutSummary li {
+    padding: 8px 0;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#checkoutSummary li:last-child {
+    border-bottom: none;
+}
+
+/* Checkout Total Price Styling */
+#checkoutTotalPrice {
+    font-weight: bold;
+    color: #ffcc00;
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #784f83;
+    border-radius: 5px;
+    width: fit-content;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Form Inputs */
+input, select, textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: #888; /* Lighter color for placeholders */
+    font-size: 14px; /* Match font size with input text */
+    font-style: italic; /* Make the placeholder text italic */
+}
+
+/* Special Instructions Box */
+textarea {
+    resize: none;
+    height: 60px;
+}
+
+/* Skip Phone Number Checkbox */
+.skip-phone-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #784f83;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    width: fit-content;
+}
+
+.skip-phone-container input {
+    width: 16px;
+    height: 16px;
+    accent-color: #ffcc00;
+}
+
+/* Checkout Buttons */
+#confirmCheckout {
+    background-color: #28a745;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#confirmCheckout:hover {
+    background-color: #218838;
+}
+
+#cancelCheckout {
+    background-color: #dc3545;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#cancelCheckout:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .food-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    table, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    #checkoutPopup {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 16px;
+        width: 100%;
+    }
+
+    .quantity-button {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+    }
+
+    .quantity-input {
+        width: 35px;
+        font-size: 0.8rem;
+        padding: 4px;
+    }
+}
+
+/* Background and improved contrast */
+body {
+    background-image: url('nigga.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
