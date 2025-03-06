@@ -14,7 +14,7 @@ body {
 
 /* Headings */
 h1, h2 {
-    color: #ffffff;
+    color: #33f00d;
     text-align: center;
     margin: 20px 0;
 }
@@ -334,5 +334,5 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #333;
+    color: #33f00d;
 }
